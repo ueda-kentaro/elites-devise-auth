@@ -1,1 +1,5 @@
-<h1>ここは非公開ページです</h1>
+<h1>ここは管理者権限につき非公開ページです</h1>
+<p><%= current_user.email %>としてログイン中</p>
+<% if current_user.admin %>
+  <%= link_to 'ユーザー一覧',users_path %>
+<% end %>
