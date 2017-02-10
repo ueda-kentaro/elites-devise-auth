@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
   get "/dashboard" => "dashboard#index"
+  # get "/admin"     => "admin#index"
+  resources :users, only: :index do
+    member do
+      patch :lock
+      patch :unlock
+    end    
+  end
   
   devise_for :users
     if Rails.env.development?

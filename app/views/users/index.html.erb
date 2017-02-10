@@ -1,0 +1,19 @@
+<h1 align="center">User一覧</h1>
+
+<table align="center", width="800px">
+  <tr align="left">
+    <th>email</th>
+    <th>status</th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr align="left">
+      <td><%= user.email %></td>
+      
+      <% if user.access_locked? %>
+        <td><%= link_to "アンロック", unlock_user_path(user), method: :patch %></td>
+      <% else %>
+        <td><%= link_to "ロック", lock_user_path(user), method: :patch %></td>
+      <% end %>
+    </tr>
+  <% end %>    
+</table>
